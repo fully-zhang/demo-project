@@ -13,9 +13,9 @@ public class OSSClientTest {
 
     private final static String ENDPOINT = "http://oss-cn-beijing.aliyuncs.com";
 
-    private final static String ACCESSKEYID = "LTAI02XSzQJGHRg1";
+    private final static String ACCESSKEYID = "";
 
-    private final static String ACCESSKEYSECRET = "e668MPHgEOOdf0Hw5phfWmK3fL5zkd";
+    private final static String ACCESSKEYSECRET = "";
 
     public static void main(String[] args) {
         // 创建OSSClient实例
