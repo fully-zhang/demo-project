@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by Administrator on 2017/8/29.
+ * Created by zhj on 2017/8/29.
  */
 public class StreamTest {
 
