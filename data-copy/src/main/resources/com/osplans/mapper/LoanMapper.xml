@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.osplans.mapper.LoanMapper" >
+  <resultMap id="BaseResultMap" type="com.osplans.domain.Loan" >
+    <id column="loanId" property="loanid" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="borrowerId" property="borrowerid" jdbcType="INTEGER" />
+    <result column="borrowerNickname" property="borrowernickname" jdbcType="VARCHAR" />
+    <result column="borrowType" property="borrowtype" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="annualInterestRate" property="annualinterestrate" jdbcType="DECIMAL" />
+    <result column="maxAnnualInterestRate" property="maxannualinterestrate" jdbcType="DECIMAL" />
+    <result column="minAnnualInterestRate" property="minannualinterestrate" jdbcType="DECIMAL" />
+    <result column="termCount" property="termcount" jdbcType="SMALLINT" />
+    <result column="termUnit" property="termunit" jdbcType="SMALLINT" />
+    <result column="minInvestUnit" property="mininvestunit" jdbcType="INTEGER" />
+    <result column="nextRepayDate" property="nextrepaydate" jdbcType="TIMESTAMP" />
+    <result column="repayedTermCount" property="repayedtermcount" jdbcType="SMALLINT" />
+    <result column="biddingAmount" property="biddingamount" jdbcType="DECIMAL" />
+    <result column="repayType" property="repaytype" jdbcType="SMALLINT" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="submitTime" property="submittime" jdbcType="TIMESTAMP" />
+    <result column="openTime" property="opentime" jdbcType="TIMESTAMP" />
+    <result column="openEndTime" property="openendtime" jdbcType="TIMESTAMP" />
+    <result column="fullTime" property="fulltime" jdbcType="TIMESTAMP" />
+    <result column="releaseTime" property="releasetime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="overDued" property="overdued" jdbcType="BIT" />
+    <result column="viewCount" property="viewcount" jdbcType="INTEGER" />
+    <result column="recommendWeight" property="recommendweight" jdbcType="SMALLINT" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="startFeeRate" property="startfeerate" jdbcType="DECIMAL" />
+    <result column="monthFeeRate" property="monthfeerate" jdbcType="DECIMAL" />
+    <result column="interestFeeRate" property="interestfeerate" jdbcType="DECIMAL" />
+    <result column="albumCapacity" property="albumcapacity" jdbcType="SMALLINT" />
+    <result column="auditorId" property="auditorid" jdbcType="INTEGER" />
+    <result column="loanPortraitId" property="loanportraitid" jdbcType="INTEGER" />
+    <result column="loanPortraitPath" property="loanportraitpath" jdbcType="VARCHAR" />
+    <result column="productId" property="productid" jdbcType="SMALLINT" />
+    <result column="contractNo" property="contractno" jdbcType="VARCHAR" />
+    <result column="dealStatus" property="dealstatus" jdbcType="SMALLINT" />
+    <result column="loanCode" property="loancode" jdbcType="VARCHAR" />
+    <result column="totalFee" property="totalfee" jdbcType="DECIMAL" />
+    <result column="monthMoney" property="monthmoney" jdbcType="DECIMAL" />
+    <result column="loanType" property="loantype" jdbcType="INTEGER" />
+    <result column="loanAmount" property="loanamount" jdbcType="DECIMAL" />
+    <result column="beginAmount" property="beginamount" jdbcType="DECIMAL" />
+    <result column="increaseAmount" property="increaseamount" jdbcType="DECIMAL" />
+    <result column="loanProductId" property="loanproductid" jdbcType="INTEGER" />
+    <result column="creditDegree" property="creditdegree" jdbcType="VARCHAR" />
+    <result column="assureId" property="assureid" jdbcType="INTEGER" />
+    <result column="recordnum" property="recordnum" jdbcType="INTEGER" />
+    <result column="inputFrom" property="inputfrom" jdbcType="INTEGER" />
+    <result column="limit_money" property="limitMoney" jdbcType="DECIMAL" />
+    <result column="loan_classify" property="loanClassify" jdbcType="INTEGER" />
+    <result column="redMoney" property="redmoney" jdbcType="VARCHAR" />
+    <result column="isTransfer" property="istransfer" jdbcType="VARCHAR" />
+    <result column="transferTime" property="transfertime" jdbcType="VARCHAR" />
+    <result column="killRes" property="killres" jdbcType="VARCHAR" />
+    <result column="stopTime" property="stoptime" jdbcType="TIMESTAMP" />
+    <result column="rendMold" property="rendmold" jdbcType="VARCHAR" />
+    <result column="isWay" property="isway" jdbcType="VARCHAR" />
+    <result column="investorcontract" property="investorcontract" jdbcType="VARCHAR" />
+    <result column="debtcontract" property="debtcontract" jdbcType="VARCHAR" />
+    <result column="mortgageType" property="mortgagetype" jdbcType="VARCHAR" />
+    <result column="yearradix" property="yearradix" jdbcType="INTEGER" />
+    <result column="valueDate" property="valuedate" jdbcType="TIMESTAMP" />
+    <result column="ceaseDate" property="ceasedate" jdbcType="TIMESTAMP" />
+    <result column="arrivalDate" property="arrivaldate" jdbcType="TIMESTAMP" />
+    <result column="payType" property="paytype" jdbcType="INTEGER" />
+    <result column="guarateenRate" property="guarateenrate" jdbcType="DECIMAL" />
+    <result column="loanLevel" property="loanlevel" jdbcType="INTEGER" />
+    <result column="financingRate" property="financingrate" jdbcType="DECIMAL" />
+    <result column="interestDays" property="interestdays" jdbcType="INTEGER" />
+    <result column="interestPrinciple" property="interestprinciple" jdbcType="INTEGER" />
+    <result column="feemode" property="feemode" jdbcType="SMALLINT" />
+    <result column="arrivalDay" property="arrivalday" jdbcType="SMALLINT" />
+    <result column="monthCount" property="monthcount" jdbcType="DECIMAL" />
+    <result column="ceaseType" property="ceasetype" jdbcType="INTEGER" />
+    <result column="startInterestDay" property="startinterestday" jdbcType="INTEGER" />
+    <result column="unfixedValueDays" property="unfixedvaluedays" jdbcType="INTEGER" />
+    <result column="salesRate" property="salesrate" jdbcType="DECIMAL" />
+    <result column="projectId" property="projectid" jdbcType="INTEGER" />
+    <result column="fullTitle" property="fulltitle" jdbcType="VARCHAR" />
+    <result column="titleNum" property="titlenum" jdbcType="VARCHAR" />
+    <result column="investType" property="investtype" jdbcType="SMALLINT" />
+    <result column="lendingTime" property="lendingtime" jdbcType="TIMESTAMP" />
+    <result column="killTime" property="killtime" jdbcType="TIMESTAMP" />
+    <result column="projectBeginTime" property="projectbegintime" jdbcType="TIMESTAMP" />
+    <result column="readyBeginTime" property="readybegintime" jdbcType="TIMESTAMP" />
+    <result column="releaseOrderNo" property="releaseorderno" jdbcType="VARCHAR" />
+    <result column="authInfo" property="authinfo" jdbcType="INTEGER" />
+    <result column="restrictionNum" property="restrictionnum" jdbcType="INTEGER" />
+    <result column="loanLabel" property="loanlabel" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    loanId, amount, title, borrowerId, borrowerNickname, borrowType, description, annualInterestRate, 
+    maxAnnualInterestRate, minAnnualInterestRate, termCount, termUnit, minInvestUnit, 
+    nextRepayDate, repayedTermCount, biddingAmount, repayType, createTime, submitTime, 
+    openTime, openEndTime, fullTime, releaseTime, endTime, overDued, viewCount, recommendWeight, 
+    `status`, startFeeRate, monthFeeRate, interestFeeRate, albumCapacity, auditorId, 
+    loanPortraitId, loanPortraitPath, productId, contractNo, dealStatus, loanCode, totalFee, 
+    monthMoney, loanType, loanAmount, beginAmount, increaseAmount, loanProductId, creditDegree, 
+    assureId, recordnum, inputFrom, limit_money, loan_classify, redMoney, isTransfer, 
+    transferTime, killRes, stopTime, rendMold, isWay, investorcontract, debtcontract, 
+    mortgageType, yearradix, valueDate, ceaseDate, arrivalDate, payType, guarateenRate, 
+    loanLevel, financingRate, interestDays, interestPrinciple, feemode, arrivalDay, monthCount, 
+    ceaseType, startInterestDay, unfixedValueDays, salesRate, projectId, fullTitle, titleNum, 
+    investType, lendingTime, killTime, projectBeginTime, readyBeginTime, releaseOrderNo, 
+    authInfo, restrictionNum, loanLabel
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from loan
+    where loanId = #{loanid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from loan
+    where loanId = #{loanid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.osplans.domain.Loan" >
+    insert into loan (loanId, amount, title, 
+      borrowerId, borrowerNickname, borrowType, 
+      description, annualInterestRate, maxAnnualInterestRate, 
+      minAnnualInterestRate, termCount, termUnit, 
+      minInvestUnit, nextRepayDate, repayedTermCount, 
+      biddingAmount, repayType, createTime, 
+      submitTime, openTime, openEndTime, 
+      fullTime, releaseTime, endTime, 
+      overDued, viewCount, recommendWeight, 
+      `status`, startFeeRate, monthFeeRate, 
+      interestFeeRate, albumCapacity, auditorId, 
+      loanPortraitId, loanPortraitPath, productId, 
+      contractNo, dealStatus, loanCode, 
+      totalFee, monthMoney, loanType, 
+      loanAmount, beginAmount, increaseAmount, 
+      loanProductId, creditDegree, assureId, 
+      recordnum, inputFrom, limit_money, 
+      loan_classify, redMoney, isTransfer, 
+      transferTime, killRes, stopTime, 
+      rendMold, isWay, investorcontract, 
+      debtcontract, mortgageType, yearradix, 
+      valueDate, ceaseDate, arrivalDate, 
+      payType, guarateenRate, loanLevel, 
+      financingRate, interestDays, interestPrinciple, 
+      feemode, arrivalDay, monthCount, 
+      ceaseType, startInterestDay, unfixedValueDays, 
+      salesRate, projectId, fullTitle, 
+      titleNum, investType, lendingTime, 
+      killTime, projectBeginTime, readyBeginTime, 
+      releaseOrderNo, authInfo, restrictionNum, 
+      loanLabel)
+    values (#{loanid,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, #{title,jdbcType=VARCHAR}, 
+      #{borrowerid,jdbcType=INTEGER}, #{borrowernickname,jdbcType=VARCHAR}, #{borrowtype,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{annualinterestrate,jdbcType=DECIMAL}, #{maxannualinterestrate,jdbcType=DECIMAL}, 
+      #{minannualinterestrate,jdbcType=DECIMAL}, #{termcount,jdbcType=SMALLINT}, #{termunit,jdbcType=SMALLINT}, 
+      #{mininvestunit,jdbcType=INTEGER}, #{nextrepaydate,jdbcType=TIMESTAMP}, #{repayedtermcount,jdbcType=SMALLINT}, 
+      #{biddingamount,jdbcType=DECIMAL}, #{repaytype,jdbcType=SMALLINT}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{submittime,jdbcType=TIMESTAMP}, #{opentime,jdbcType=TIMESTAMP}, #{openendtime,jdbcType=TIMESTAMP}, 
+      #{fulltime,jdbcType=TIMESTAMP}, #{releasetime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+      #{overdued,jdbcType=BIT}, #{viewcount,jdbcType=INTEGER}, #{recommendweight,jdbcType=SMALLINT}, 
+      #{status,jdbcType=SMALLINT}, #{startfeerate,jdbcType=DECIMAL}, #{monthfeerate,jdbcType=DECIMAL}, 
+      #{interestfeerate,jdbcType=DECIMAL}, #{albumcapacity,jdbcType=SMALLINT}, #{auditorid,jdbcType=INTEGER}, 
+      #{loanportraitid,jdbcType=INTEGER}, #{loanportraitpath,jdbcType=VARCHAR}, #{productid,jdbcType=SMALLINT}, 
+      #{contractno,jdbcType=VARCHAR}, #{dealstatus,jdbcType=SMALLINT}, #{loancode,jdbcType=VARCHAR}, 
+      #{totalfee,jdbcType=DECIMAL}, #{monthmoney,jdbcType=DECIMAL}, #{loantype,jdbcType=INTEGER}, 
+      #{loanamount,jdbcType=DECIMAL}, #{beginamount,jdbcType=DECIMAL}, #{increaseamount,jdbcType=DECIMAL}, 
+      #{loanproductid,jdbcType=INTEGER}, #{creditdegree,jdbcType=VARCHAR}, #{assureid,jdbcType=INTEGER}, 
+      #{recordnum,jdbcType=INTEGER}, #{inputfrom,jdbcType=INTEGER}, #{limitMoney,jdbcType=DECIMAL}, 
+      #{loanClassify,jdbcType=INTEGER}, #{redmoney,jdbcType=VARCHAR}, #{istransfer,jdbcType=VARCHAR}, 
+      #{transfertime,jdbcType=VARCHAR}, #{killres,jdbcType=VARCHAR}, #{stoptime,jdbcType=TIMESTAMP}, 
+      #{rendmold,jdbcType=VARCHAR}, #{isway,jdbcType=VARCHAR}, #{investorcontract,jdbcType=VARCHAR}, 
+      #{debtcontract,jdbcType=VARCHAR}, #{mortgagetype,jdbcType=VARCHAR}, #{yearradix,jdbcType=INTEGER}, 
+      #{valuedate,jdbcType=TIMESTAMP}, #{ceasedate,jdbcType=TIMESTAMP}, #{arrivaldate,jdbcType=TIMESTAMP}, 
+      #{paytype,jdbcType=INTEGER}, #{guarateenrate,jdbcType=DECIMAL}, #{loanlevel,jdbcType=INTEGER}, 
+      #{financingrate,jdbcType=DECIMAL}, #{interestdays,jdbcType=INTEGER}, #{interestprinciple,jdbcType=INTEGER}, 
+      #{feemode,jdbcType=SMALLINT}, #{arrivalday,jdbcType=SMALLINT}, #{monthcount,jdbcType=DECIMAL}, 
+      #{ceasetype,jdbcType=INTEGER}, #{startinterestday,jdbcType=INTEGER}, #{unfixedvaluedays,jdbcType=INTEGER}, 
+      #{salesrate,jdbcType=DECIMAL}, #{projectid,jdbcType=INTEGER}, #{fulltitle,jdbcType=VARCHAR}, 
+      #{titlenum,jdbcType=VARCHAR}, #{investtype,jdbcType=SMALLINT}, #{lendingtime,jdbcType=TIMESTAMP}, 
+      #{killtime,jdbcType=TIMESTAMP}, #{projectbegintime,jdbcType=TIMESTAMP}, #{readybegintime,jdbcType=TIMESTAMP}, 
+      #{releaseorderno,jdbcType=VARCHAR}, #{authinfo,jdbcType=INTEGER}, #{restrictionnum,jdbcType=INTEGER}, 
+      #{loanlabel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.osplans.domain.Loan" >
+    insert into loan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="loanid != null" >
+        loanId,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="borrowerid != null" >
+        borrowerId,
+      </if>
+      <if test="borrowernickname != null" >
+        borrowerNickname,
+      </if>
+      <if test="borrowtype != null" >
+        borrowType,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="annualinterestrate != null" >
+        annualInterestRate,
+      </if>
+      <if test="maxannualinterestrate != null" >
+        maxAnnualInterestRate,
+      </if>
+      <if test="minannualinterestrate != null" >
+        minAnnualInterestRate,
+      </if>
+      <if test="termcount != null" >
+        termCount,
+      </if>
+      <if test="termunit != null" >
+        termUnit,
+      </if>
+      <if test="mininvestunit != null" >
+        minInvestUnit,
+      </if>
+      <if test="nextrepaydate != null" >
+        nextRepayDate,
+      </if>
+      <if test="repayedtermcount != null" >
+        repayedTermCount,
+      </if>
+      <if test="biddingamount != null" >
+        biddingAmount,
+      </if>
+      <if test="repaytype != null" >
+        repayType,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="submittime != null" >
+        submitTime,
+      </if>
+      <if test="opentime != null" >
+        openTime,
+      </if>
+      <if test="openendtime != null" >
+        openEndTime,
+      </if>
+      <if test="fulltime != null" >
+        fullTime,
+      </if>
+      <if test="releasetime != null" >
+        releaseTime,
+      </if>
+      <if test="endtime != null" >
+        endTime,
+      </if>
+      <if test="overdued != null" >
+        overDued,
+      </if>
+      <if test="viewcount != null" >
+        viewCount,
+      </if>
+      <if test="recommendweight != null" >
+        recommendWeight,
+      </if>
+      <if test="status != null" >
+        `status`,
+      </if>
+      <if test="startfeerate != null" >
+        startFeeRate,
+      </if>
+      <if test="monthfeerate != null" >
+        monthFeeRate,
+      </if>
+      <if test="interestfeerate != null" >
+        interestFeeRate,
+      </if>
+      <if test="albumcapacity != null" >
+        albumCapacity,
+      </if>
+      <if test="auditorid != null" >
+        auditorId,
+      </if>
+      <if test="loanportraitid != null" >
+        loanPortraitId,
+      </if>
+      <if test="loanportraitpath != null" >
+        loanPortraitPath,
+      </if>
+      <if test="productid != null" >
+        productId,
+      </if>
+      <if test="contractno != null" >
+        contractNo,
+      </if>
+      <if test="dealstatus != null" >
+        dealStatus,
+      </if>
+      <if test="loancode != null" >
+        loanCode,
+      </if>
+      <if test="totalfee != null" >
+        totalFee,
+      </if>
+      <if test="monthmoney != null" >
+        monthMoney,
+      </if>
+      <if test="loantype != null" >
+        loanType,
+      </if>
+      <if test="loanamount != null" >
+        loanAmount,
+      </if>
+      <if test="beginamount != null" >
+        beginAmount,
+      </if>
+      <if test="increaseamount != null" >
+        increaseAmount,
+      </if>
+      <if test="loanproductid != null" >
+        loanProductId,
+      </if>
+      <if test="creditdegree != null" >
+        creditDegree,
+      </if>
+      <if test="assureid != null" >
+        assureId,
+      </if>
+      <if test="recordnum != null" >
+        recordnum,
+      </if>
+      <if test="inputfrom != null" >
+        inputFrom,
+      </if>
+      <if test="limitMoney != null" >
+        limit_money,
+      </if>
+      <if test="loanClassify != null" >
+        loan_classify,
+      </if>
+      <if test="redmoney != null" >
+        redMoney,
+      </if>
+      <if test="istransfer != null" >
+        isTransfer,
+      </if>
+      <if test="transfertime != null" >
+        transferTime,
+      </if>
+      <if test="killres != null" >
+        killRes,
+      </if>
+      <if test="stoptime != null" >
+        stopTime,
+      </if>
+      <if test="rendmold != null" >
+        rendMold,
+      </if>
+      <if test="isway != null" >
+        isWay,
+      </if>
+      <if test="investorcontract != null" >
+        investorcontract,
+      </if>
+      <if test="debtcontract != null" >
+        debtcontract,
+      </if>
+      <if test="mortgagetype != null" >
+        mortgageType,
+      </if>
+      <if test="yearradix != null" >
+        yearradix,
+      </if>
+      <if test="valuedate != null" >
+        valueDate,
+      </if>
+      <if test="ceasedate != null" >
+        ceaseDate,
+      </if>
+      <if test="arrivaldate != null" >
+        arrivalDate,
+      </if>
+      <if test="paytype != null" >
+        payType,
+      </if>
+      <if test="guarateenrate != null" >
+        guarateenRate,
+      </if>
+      <if test="loanlevel != null" >
+        loanLevel,
+      </if>
+      <if test="financingrate != null" >
+        financingRate,
+      </if>
+      <if test="interestdays != null" >
+        interestDays,
+      </if>
+      <if test="interestprinciple != null" >
+        interestPrinciple,
+      </if>
+      <if test="feemode != null" >
+        feemode,
+      </if>
+      <if test="arrivalday != null" >
+        arrivalDay,
+      </if>
+      <if test="monthcount != null" >
+        monthCount,
+      </if>
+      <if test="ceasetype != null" >
+        ceaseType,
+      </if>
+      <if test="startinterestday != null" >
+        startInterestDay,
+      </if>
+      <if test="unfixedvaluedays != null" >
+        unfixedValueDays,
+      </if>
+      <if test="salesrate != null" >
+        salesRate,
+      </if>
+      <if test="projectid != null" >
+        projectId,
+      </if>
+      <if test="fulltitle != null" >
+        fullTitle,
+      </if>
+      <if test="titlenum != null" >
+        titleNum,
+      </if>
+      <if test="investtype != null" >
+        investType,
+      </if>
+      <if test="lendingtime != null" >
+        lendingTime,
+      </if>
+      <if test="killtime != null" >
+        killTime,
+      </if>
+      <if test="projectbegintime != null" >
+        projectBeginTime,
+      </if>
+      <if test="readybegintime != null" >
+        readyBeginTime,
+      </if>
+      <if test="releaseorderno != null" >
+        releaseOrderNo,
+      </if>
+      <if test="authinfo != null" >
+        authInfo,
+      </if>
+      <if test="restrictionnum != null" >
+        restrictionNum,
+      </if>
+      <if test="loanlabel != null" >
+        loanLabel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="loanid != null" >
+        #{loanid,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="borrowerid != null" >
+        #{borrowerid,jdbcType=INTEGER},
+      </if>
+      <if test="borrowernickname != null" >
+        #{borrowernickname,jdbcType=VARCHAR},
+      </if>
+      <if test="borrowtype != null" >
+        #{borrowtype,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="annualinterestrate != null" >
+        #{annualinterestrate,jdbcType=DECIMAL},
+      </if>
+      <if test="maxannualinterestrate != null" >
+        #{maxannualinterestrate,jdbcType=DECIMAL},
+      </if>
+      <if test="minannualinterestrate != null" >
+        #{minannualinterestrate,jdbcType=DECIMAL},
+      </if>
+      <if test="termcount != null" >
+        #{termcount,jdbcType=SMALLINT},
+      </if>
+      <if test="termunit != null" >
+        #{termunit,jdbcType=SMALLINT},
+      </if>
+      <if test="mininvestunit != null" >
+        #{mininvestunit,jdbcType=INTEGER},
+      </if>
+      <if test="nextrepaydate != null" >
+        #{nextrepaydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repayedtermcount != null" >
+        #{repayedtermcount,jdbcType=SMALLINT},
+      </if>
+      <if test="biddingamount != null" >
+        #{biddingamount,jdbcType=DECIMAL},
+      </if>
+      <if test="repaytype != null" >
+        #{repaytype,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submittime != null" >
+        #{submittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opentime != null" >
+        #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openendtime != null" >
+        #{openendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fulltime != null" >
+        #{fulltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releasetime != null" >
+        #{releasetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overdued != null" >
+        #{overdued,jdbcType=BIT},
+      </if>
+      <if test="viewcount != null" >
+        #{viewcount,jdbcType=INTEGER},
+      </if>
+      <if test="recommendweight != null" >
+        #{recommendweight,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="startfeerate != null" >
+        #{startfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="monthfeerate != null" >
+        #{monthfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="interestfeerate != null" >
+        #{interestfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="albumcapacity != null" >
+        #{albumcapacity,jdbcType=SMALLINT},
+      </if>
+      <if test="auditorid != null" >
+        #{auditorid,jdbcType=INTEGER},
+      </if>
+      <if test="loanportraitid != null" >
+        #{loanportraitid,jdbcType=INTEGER},
+      </if>
+      <if test="loanportraitpath != null" >
+        #{loanportraitpath,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=SMALLINT},
+      </if>
+      <if test="contractno != null" >
+        #{contractno,jdbcType=VARCHAR},
+      </if>
+      <if test="dealstatus != null" >
+        #{dealstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="loancode != null" >
+        #{loancode,jdbcType=VARCHAR},
+      </if>
+      <if test="totalfee != null" >
+        #{totalfee,jdbcType=DECIMAL},
+      </if>
+      <if test="monthmoney != null" >
+        #{monthmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="loantype != null" >
+        #{loantype,jdbcType=INTEGER},
+      </if>
+      <if test="loanamount != null" >
+        #{loanamount,jdbcType=DECIMAL},
+      </if>
+      <if test="beginamount != null" >
+        #{beginamount,jdbcType=DECIMAL},
+      </if>
+      <if test="increaseamount != null" >
+        #{increaseamount,jdbcType=DECIMAL},
+      </if>
+      <if test="loanproductid != null" >
+        #{loanproductid,jdbcType=INTEGER},
+      </if>
+      <if test="creditdegree != null" >
+        #{creditdegree,jdbcType=VARCHAR},
+      </if>
+      <if test="assureid != null" >
+        #{assureid,jdbcType=INTEGER},
+      </if>
+      <if test="recordnum != null" >
+        #{recordnum,jdbcType=INTEGER},
+      </if>
+      <if test="inputfrom != null" >
+        #{inputfrom,jdbcType=INTEGER},
+      </if>
+      <if test="limitMoney != null" >
+        #{limitMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="loanClassify != null" >
+        #{loanClassify,jdbcType=INTEGER},
+      </if>
+      <if test="redmoney != null" >
+        #{redmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="istransfer != null" >
+        #{istransfer,jdbcType=VARCHAR},
+      </if>
+      <if test="transfertime != null" >
+        #{transfertime,jdbcType=VARCHAR},
+      </if>
+      <if test="killres != null" >
+        #{killres,jdbcType=VARCHAR},
+      </if>
+      <if test="stoptime != null" >
+        #{stoptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rendmold != null" >
+        #{rendmold,jdbcType=VARCHAR},
+      </if>
+      <if test="isway != null" >
+        #{isway,jdbcType=VARCHAR},
+      </if>
+      <if test="investorcontract != null" >
+        #{investorcontract,jdbcType=VARCHAR},
+      </if>
+      <if test="debtcontract != null" >
+        #{debtcontract,jdbcType=VARCHAR},
+      </if>
+      <if test="mortgagetype != null" >
+        #{mortgagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="yearradix != null" >
+        #{yearradix,jdbcType=INTEGER},
+      </if>
+      <if test="valuedate != null" >
+        #{valuedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ceasedate != null" >
+        #{ceasedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arrivaldate != null" >
+        #{arrivaldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paytype != null" >
+        #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="guarateenrate != null" >
+        #{guarateenrate,jdbcType=DECIMAL},
+      </if>
+      <if test="loanlevel != null" >
+        #{loanlevel,jdbcType=INTEGER},
+      </if>
+      <if test="financingrate != null" >
+        #{financingrate,jdbcType=DECIMAL},
+      </if>
+      <if test="interestdays != null" >
+        #{interestdays,jdbcType=INTEGER},
+      </if>
+      <if test="interestprinciple != null" >
+        #{interestprinciple,jdbcType=INTEGER},
+      </if>
+      <if test="feemode != null" >
+        #{feemode,jdbcType=SMALLINT},
+      </if>
+      <if test="arrivalday != null" >
+        #{arrivalday,jdbcType=SMALLINT},
+      </if>
+      <if test="monthcount != null" >
+        #{monthcount,jdbcType=DECIMAL},
+      </if>
+      <if test="ceasetype != null" >
+        #{ceasetype,jdbcType=INTEGER},
+      </if>
+      <if test="startinterestday != null" >
+        #{startinterestday,jdbcType=INTEGER},
+      </if>
+      <if test="unfixedvaluedays != null" >
+        #{unfixedvaluedays,jdbcType=INTEGER},
+      </if>
+      <if test="salesrate != null" >
+        #{salesrate,jdbcType=DECIMAL},
+      </if>
+      <if test="projectid != null" >
+        #{projectid,jdbcType=INTEGER},
+      </if>
+      <if test="fulltitle != null" >
+        #{fulltitle,jdbcType=VARCHAR},
+      </if>
+      <if test="titlenum != null" >
+        #{titlenum,jdbcType=VARCHAR},
+      </if>
+      <if test="investtype != null" >
+        #{investtype,jdbcType=SMALLINT},
+      </if>
+      <if test="lendingtime != null" >
+        #{lendingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="killtime != null" >
+        #{killtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectbegintime != null" >
+        #{projectbegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readybegintime != null" >
+        #{readybegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releaseorderno != null" >
+        #{releaseorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="authinfo != null" >
+        #{authinfo,jdbcType=INTEGER},
+      </if>
+      <if test="restrictionnum != null" >
+        #{restrictionnum,jdbcType=INTEGER},
+      </if>
+      <if test="loanlabel != null" >
+        #{loanlabel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.osplans.domain.Loan" >
+    update loan
+    <set >
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="borrowerid != null" >
+        borrowerId = #{borrowerid,jdbcType=INTEGER},
+      </if>
+      <if test="borrowernickname != null" >
+        borrowerNickname = #{borrowernickname,jdbcType=VARCHAR},
+      </if>
+      <if test="borrowtype != null" >
+        borrowType = #{borrowtype,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="annualinterestrate != null" >
+        annualInterestRate = #{annualinterestrate,jdbcType=DECIMAL},
+      </if>
+      <if test="maxannualinterestrate != null" >
+        maxAnnualInterestRate = #{maxannualinterestrate,jdbcType=DECIMAL},
+      </if>
+      <if test="minannualinterestrate != null" >
+        minAnnualInterestRate = #{minannualinterestrate,jdbcType=DECIMAL},
+      </if>
+      <if test="termcount != null" >
+        termCount = #{termcount,jdbcType=SMALLINT},
+      </if>
+      <if test="termunit != null" >
+        termUnit = #{termunit,jdbcType=SMALLINT},
+      </if>
+      <if test="mininvestunit != null" >
+        minInvestUnit = #{mininvestunit,jdbcType=INTEGER},
+      </if>
+      <if test="nextrepaydate != null" >
+        nextRepayDate = #{nextrepaydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repayedtermcount != null" >
+        repayedTermCount = #{repayedtermcount,jdbcType=SMALLINT},
+      </if>
+      <if test="biddingamount != null" >
+        biddingAmount = #{biddingamount,jdbcType=DECIMAL},
+      </if>
+      <if test="repaytype != null" >
+        repayType = #{repaytype,jdbcType=SMALLINT},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submittime != null" >
+        submitTime = #{submittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opentime != null" >
+        openTime = #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openendtime != null" >
+        openEndTime = #{openendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fulltime != null" >
+        fullTime = #{fulltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releasetime != null" >
+        releaseTime = #{releasetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overdued != null" >
+        overDued = #{overdued,jdbcType=BIT},
+      </if>
+      <if test="viewcount != null" >
+        viewCount = #{viewcount,jdbcType=INTEGER},
+      </if>
+      <if test="recommendweight != null" >
+        recommendWeight = #{recommendweight,jdbcType=SMALLINT},
+      </if>
+      <if test="status != null" >
+        `status` = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="startfeerate != null" >
+        startFeeRate = #{startfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="monthfeerate != null" >
+        monthFeeRate = #{monthfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="interestfeerate != null" >
+        interestFeeRate = #{interestfeerate,jdbcType=DECIMAL},
+      </if>
+      <if test="albumcapacity != null" >
+        albumCapacity = #{albumcapacity,jdbcType=SMALLINT},
+      </if>
+      <if test="auditorid != null" >
+        auditorId = #{auditorid,jdbcType=INTEGER},
+      </if>
+      <if test="loanportraitid != null" >
+        loanPortraitId = #{loanportraitid,jdbcType=INTEGER},
+      </if>
+      <if test="loanportraitpath != null" >
+        loanPortraitPath = #{loanportraitpath,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null" >
+        productId = #{productid,jdbcType=SMALLINT},
+      </if>
+      <if test="contractno != null" >
+        contractNo = #{contractno,jdbcType=VARCHAR},
+      </if>
+      <if test="dealstatus != null" >
+        dealStatus = #{dealstatus,jdbcType=SMALLINT},
+      </if>
+      <if test="loancode != null" >
+        loanCode = #{loancode,jdbcType=VARCHAR},
+      </if>
+      <if test="totalfee != null" >
+        totalFee = #{totalfee,jdbcType=DECIMAL},
+      </if>
+      <if test="monthmoney != null" >
+        monthMoney = #{monthmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="loantype != null" >
+        loanType = #{loantype,jdbcType=INTEGER},
+      </if>
+      <if test="loanamount != null" >
+        loanAmount = #{loanamount,jdbcType=DECIMAL},
+      </if>
+      <if test="beginamount != null" >
+        beginAmount = #{beginamount,jdbcType=DECIMAL},
+      </if>
+      <if test="increaseamount != null" >
+        increaseAmount = #{increaseamount,jdbcType=DECIMAL},
+      </if>
+      <if test="loanproductid != null" >
+        loanProductId = #{loanproductid,jdbcType=INTEGER},
+      </if>
+      <if test="creditdegree != null" >
+        creditDegree = #{creditdegree,jdbcType=VARCHAR},
+      </if>
+      <if test="assureid != null" >
+        assureId = #{assureid,jdbcType=INTEGER},
+      </if>
+      <if test="recordnum != null" >
+        recordnum = #{recordnum,jdbcType=INTEGER},
+      </if>
+      <if test="inputfrom != null" >
+        inputFrom = #{inputfrom,jdbcType=INTEGER},
+      </if>
+      <if test="limitMoney != null" >
+        limit_money = #{limitMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="loanClassify != null" >
+        loan_classify = #{loanClassify,jdbcType=INTEGER},
+      </if>
+      <if test="redmoney != null" >
+        redMoney = #{redmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="istransfer != null" >
+        isTransfer = #{istransfer,jdbcType=VARCHAR},
+      </if>
+      <if test="transfertime != null" >
+        transferTime = #{transfertime,jdbcType=VARCHAR},
+      </if>
+      <if test="killres != null" >
+        killRes = #{killres,jdbcType=VARCHAR},
+      </if>
+      <if test="stoptime != null" >
+        stopTime = #{stoptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rendmold != null" >
+        rendMold = #{rendmold,jdbcType=VARCHAR},
+      </if>
+      <if test="isway != null" >
+        isWay = #{isway,jdbcType=VARCHAR},
+      </if>
+      <if test="investorcontract != null" >
+        investorcontract = #{investorcontract,jdbcType=VARCHAR},
+      </if>
+      <if test="debtcontract != null" >
+        debtcontract = #{debtcontract,jdbcType=VARCHAR},
+      </if>
+      <if test="mortgagetype != null" >
+        mortgageType = #{mortgagetype,jdbcType=VARCHAR},
+      </if>
+      <if test="yearradix != null" >
+        yearradix = #{yearradix,jdbcType=INTEGER},
+      </if>
+      <if test="valuedate != null" >
+        valueDate = #{valuedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ceasedate != null" >
+        ceaseDate = #{ceasedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="arrivaldate != null" >
+        arrivalDate = #{arrivaldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paytype != null" >
+        payType = #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="guarateenrate != null" >
+        guarateenRate = #{guarateenrate,jdbcType=DECIMAL},
+      </if>
+      <if test="loanlevel != null" >
+        loanLevel = #{loanlevel,jdbcType=INTEGER},
+      </if>
+      <if test="financingrate != null" >
+        financingRate = #{financingrate,jdbcType=DECIMAL},
+      </if>
+      <if test="interestdays != null" >
+        interestDays = #{interestdays,jdbcType=INTEGER},
+      </if>
+      <if test="interestprinciple != null" >
+        interestPrinciple = #{interestprinciple,jdbcType=INTEGER},
+      </if>
+      <if test="feemode != null" >
+        feemode = #{feemode,jdbcType=SMALLINT},
+      </if>
+      <if test="arrivalday != null" >
+        arrivalDay = #{arrivalday,jdbcType=SMALLINT},
+      </if>
+      <if test="monthcount != null" >
+        monthCount = #{monthcount,jdbcType=DECIMAL},
+      </if>
+      <if test="ceasetype != null" >
+        ceaseType = #{ceasetype,jdbcType=INTEGER},
+      </if>
+      <if test="startinterestday != null" >
+        startInterestDay = #{startinterestday,jdbcType=INTEGER},
+      </if>
+      <if test="unfixedvaluedays != null" >
+        unfixedValueDays = #{unfixedvaluedays,jdbcType=INTEGER},
+      </if>
+      <if test="salesrate != null" >
+        salesRate = #{salesrate,jdbcType=DECIMAL},
+      </if>
+      <if test="projectid != null" >
+        projectId = #{projectid,jdbcType=INTEGER},
+      </if>
+      <if test="fulltitle != null" >
+        fullTitle = #{fulltitle,jdbcType=VARCHAR},
+      </if>
+      <if test="titlenum != null" >
+        titleNum = #{titlenum,jdbcType=VARCHAR},
+      </if>
+      <if test="investtype != null" >
+        investType = #{investtype,jdbcType=SMALLINT},
+      </if>
+      <if test="lendingtime != null" >
+        lendingTime = #{lendingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="killtime != null" >
+        killTime = #{killtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectbegintime != null" >
+        projectBeginTime = #{projectbegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readybegintime != null" >
+        readyBeginTime = #{readybegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="releaseorderno != null" >
+        releaseOrderNo = #{releaseorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="authinfo != null" >
+        authInfo = #{authinfo,jdbcType=INTEGER},
+      </if>
+      <if test="restrictionnum != null" >
+        restrictionNum = #{restrictionnum,jdbcType=INTEGER},
+      </if>
+      <if test="loanlabel != null" >
+        loanLabel = #{loanlabel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where loanId = #{loanid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.osplans.domain.Loan" >
+    update loan
+    set amount = #{amount,jdbcType=DECIMAL},
+      title = #{title,jdbcType=VARCHAR},
+      borrowerId = #{borrowerid,jdbcType=INTEGER},
+      borrowerNickname = #{borrowernickname,jdbcType=VARCHAR},
+      borrowType = #{borrowtype,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      annualInterestRate = #{annualinterestrate,jdbcType=DECIMAL},
+      maxAnnualInterestRate = #{maxannualinterestrate,jdbcType=DECIMAL},
+      minAnnualInterestRate = #{minannualinterestrate,jdbcType=DECIMAL},
+      termCount = #{termcount,jdbcType=SMALLINT},
+      termUnit = #{termunit,jdbcType=SMALLINT},
+      minInvestUnit = #{mininvestunit,jdbcType=INTEGER},
+      nextRepayDate = #{nextrepaydate,jdbcType=TIMESTAMP},
+      repayedTermCount = #{repayedtermcount,jdbcType=SMALLINT},
+      biddingAmount = #{biddingamount,jdbcType=DECIMAL},
+      repayType = #{repaytype,jdbcType=SMALLINT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      submitTime = #{submittime,jdbcType=TIMESTAMP},
+      openTime = #{opentime,jdbcType=TIMESTAMP},
+      openEndTime = #{openendtime,jdbcType=TIMESTAMP},
+      fullTime = #{fulltime,jdbcType=TIMESTAMP},
+      releaseTime = #{releasetime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      overDued = #{overdued,jdbcType=BIT},
+      viewCount = #{viewcount,jdbcType=INTEGER},
+      recommendWeight = #{recommendweight,jdbcType=SMALLINT},
+      `status` = #{status,jdbcType=SMALLINT},
+      startFeeRate = #{startfeerate,jdbcType=DECIMAL},
+      monthFeeRate = #{monthfeerate,jdbcType=DECIMAL},
+      interestFeeRate = #{interestfeerate,jdbcType=DECIMAL},
+      albumCapacity = #{albumcapacity,jdbcType=SMALLINT},
+      auditorId = #{auditorid,jdbcType=INTEGER},
+      loanPortraitId = #{loanportraitid,jdbcType=INTEGER},
+      loanPortraitPath = #{loanportraitpath,jdbcType=VARCHAR},
+      productId = #{productid,jdbcType=SMALLINT},
+      contractNo = #{contractno,jdbcType=VARCHAR},
+      dealStatus = #{dealstatus,jdbcType=SMALLINT},
+      loanCode = #{loancode,jdbcType=VARCHAR},
+      totalFee = #{totalfee,jdbcType=DECIMAL},
+      monthMoney = #{monthmoney,jdbcType=DECIMAL},
+      loanType = #{loantype,jdbcType=INTEGER},
+      loanAmount = #{loanamount,jdbcType=DECIMAL},
+      beginAmount = #{beginamount,jdbcType=DECIMAL},
+      increaseAmount = #{increaseamount,jdbcType=DECIMAL},
+      loanProductId = #{loanproductid,jdbcType=INTEGER},
+      creditDegree = #{creditdegree,jdbcType=VARCHAR},
+      assureId = #{assureid,jdbcType=INTEGER},
+      recordnum = #{recordnum,jdbcType=INTEGER},
+      inputFrom = #{inputfrom,jdbcType=INTEGER},
+      limit_money = #{limitMoney,jdbcType=DECIMAL},
+      loan_classify = #{loanClassify,jdbcType=INTEGER},
+      redMoney = #{redmoney,jdbcType=VARCHAR},
+      isTransfer = #{istransfer,jdbcType=VARCHAR},
+      transferTime = #{transfertime,jdbcType=VARCHAR},
+      killRes = #{killres,jdbcType=VARCHAR},
+      stopTime = #{stoptime,jdbcType=TIMESTAMP},
+      rendMold = #{rendmold,jdbcType=VARCHAR},
+      isWay = #{isway,jdbcType=VARCHAR},
+      investorcontract = #{investorcontract,jdbcType=VARCHAR},
+      debtcontract = #{debtcontract,jdbcType=VARCHAR},
+      mortgageType = #{mortgagetype,jdbcType=VARCHAR},
+      yearradix = #{yearradix,jdbcType=INTEGER},
+      valueDate = #{valuedate,jdbcType=TIMESTAMP},
+      ceaseDate = #{ceasedate,jdbcType=TIMESTAMP},
+      arrivalDate = #{arrivaldate,jdbcType=TIMESTAMP},
+      payType = #{paytype,jdbcType=INTEGER},
+      guarateenRate = #{guarateenrate,jdbcType=DECIMAL},
+      loanLevel = #{loanlevel,jdbcType=INTEGER},
+      financingRate = #{financingrate,jdbcType=DECIMAL},
+      interestDays = #{interestdays,jdbcType=INTEGER},
+      interestPrinciple = #{interestprinciple,jdbcType=INTEGER},
+      feemode = #{feemode,jdbcType=SMALLINT},
+      arrivalDay = #{arrivalday,jdbcType=SMALLINT},
+      monthCount = #{monthcount,jdbcType=DECIMAL},
+      ceaseType = #{ceasetype,jdbcType=INTEGER},
+      startInterestDay = #{startinterestday,jdbcType=INTEGER},
+      unfixedValueDays = #{unfixedvaluedays,jdbcType=INTEGER},
+      salesRate = #{salesrate,jdbcType=DECIMAL},
+      projectId = #{projectid,jdbcType=INTEGER},
+      fullTitle = #{fulltitle,jdbcType=VARCHAR},
+      titleNum = #{titlenum,jdbcType=VARCHAR},
+      investType = #{investtype,jdbcType=SMALLINT},
+      lendingTime = #{lendingtime,jdbcType=TIMESTAMP},
+      killTime = #{killtime,jdbcType=TIMESTAMP},
+      projectBeginTime = #{projectbegintime,jdbcType=TIMESTAMP},
+      readyBeginTime = #{readybegintime,jdbcType=TIMESTAMP},
+      releaseOrderNo = #{releaseorderno,jdbcType=VARCHAR},
+      authInfo = #{authinfo,jdbcType=INTEGER},
+      restrictionNum = #{restrictionnum,jdbcType=INTEGER},
+      loanLabel = #{loanlabel,jdbcType=VARCHAR}
+    where loanId = #{loanid,jdbcType=INTEGER}
+  </update>
+</mapper>

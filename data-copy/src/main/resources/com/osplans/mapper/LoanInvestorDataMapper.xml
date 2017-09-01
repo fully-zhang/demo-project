@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.osplans.mapper.LoanInvestorDataMapper" >
+  <resultMap id="BaseResultMap" type="com.osplans.domain.LoanInvestorData" >
+    <result column="loanId" property="loanid" jdbcType="INTEGER" />
+    <result column="investorUserId" property="investoruserid" jdbcType="VARCHAR" />
+    <result column="investAmount" property="investamount" jdbcType="DECIMAL" />
+    <result column="investTime" property="investtime" jdbcType="TIMESTAMP" />
+    <result column="leftTermCount" property="lefttermcount" jdbcType="SMALLINT" />
+    <result column="toBeCollectedPrincipal" property="tobecollectedprincipal" jdbcType="DECIMAL" />
+    <result column="toBeCollectedInterest" property="tobecollectedinterest" jdbcType="DECIMAL" />
+    <result column="collectedPrincipal" property="collectedprincipal" jdbcType="DECIMAL" />
+    <result column="collectedInterest" property="collectedinterest" jdbcType="DECIMAL" />
+    <result column="nextPhasePrincipal" property="nextphaseprincipal" jdbcType="DECIMAL" />
+    <result column="nextPhaseInterest" property="nextphaseinterest" jdbcType="DECIMAL" />
+    <result column="nextRepayDate" property="nextrepaydate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insert" parameterType="com.osplans.domain.LoanInvestorData" >
+    insert into loan_investor_data (loanId, investorUserId, investAmount, 
+      investTime, leftTermCount, toBeCollectedPrincipal, 
+      toBeCollectedInterest, collectedPrincipal, 
+      collectedInterest, nextPhasePrincipal, 
+      nextPhaseInterest, nextRepayDate)
+    values (#{loanid,jdbcType=INTEGER}, #{investoruserid,jdbcType=VARCHAR}, #{investamount,jdbcType=DECIMAL}, 
+      #{investtime,jdbcType=TIMESTAMP}, #{lefttermcount,jdbcType=SMALLINT}, #{tobecollectedprincipal,jdbcType=DECIMAL}, 
+      #{tobecollectedinterest,jdbcType=DECIMAL}, #{collectedprincipal,jdbcType=DECIMAL}, 
+      #{collectedinterest,jdbcType=DECIMAL}, #{nextphaseprincipal,jdbcType=DECIMAL}, 
+      #{nextphaseinterest,jdbcType=DECIMAL}, #{nextrepaydate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.osplans.domain.LoanInvestorData" >
+    insert into loan_investor_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="loanid != null" >
+        loanId,
+      </if>
+      <if test="investoruserid != null" >
+        investorUserId,
+      </if>
+      <if test="investamount != null" >
+        investAmount,
+      </if>
+      <if test="investtime != null" >
+        investTime,
+      </if>
+      <if test="lefttermcount != null" >
+        leftTermCount,
+      </if>
+      <if test="tobecollectedprincipal != null" >
+        toBeCollectedPrincipal,
+      </if>
+      <if test="tobecollectedinterest != null" >
+        toBeCollectedInterest,
+      </if>
+      <if test="collectedprincipal != null" >
+        collectedPrincipal,
+      </if>
+      <if test="collectedinterest != null" >
+        collectedInterest,
+      </if>
+      <if test="nextphaseprincipal != null" >
+        nextPhasePrincipal,
+      </if>
+      <if test="nextphaseinterest != null" >
+        nextPhaseInterest,
+      </if>
+      <if test="nextrepaydate != null" >
+        nextRepayDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="loanid != null" >
+        #{loanid,jdbcType=INTEGER},
+      </if>
+      <if test="investoruserid != null" >
+        #{investoruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="investamount != null" >
+        #{investamount,jdbcType=DECIMAL},
+      </if>
+      <if test="investtime != null" >
+        #{investtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lefttermcount != null" >
+        #{lefttermcount,jdbcType=SMALLINT},
+      </if>
+      <if test="tobecollectedprincipal != null" >
+        #{tobecollectedprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="tobecollectedinterest != null" >
+        #{tobecollectedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="collectedprincipal != null" >
+        #{collectedprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="collectedinterest != null" >
+        #{collectedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="nextphaseprincipal != null" >
+        #{nextphaseprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="nextphaseinterest != null" >
+        #{nextphaseinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="nextrepaydate != null" >
+        #{nextrepaydate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

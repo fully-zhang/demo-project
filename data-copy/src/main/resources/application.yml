@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: data-copy
+  datasource:
+    url: jdbc:mysql://localhost:3306/cup3014
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+
+server:
+  port: 8091

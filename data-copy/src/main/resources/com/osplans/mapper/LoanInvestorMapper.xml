@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.osplans.mapper.LoanInvestorMapper" >
+  <resultMap id="BaseResultMap" type="com.osplans.domain.LoanInvestor" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="loanId" property="loanid" jdbcType="INTEGER" />
+    <result column="investorUserId" property="investoruserid" jdbcType="INTEGER" />
+    <result column="investorNickname" property="investornickname" jdbcType="VARCHAR" />
+    <result column="lastInvestorUserId" property="lastinvestoruserid" jdbcType="INTEGER" />
+    <result column="lastInvestorNickname" property="lastinvestornickname" jdbcType="VARCHAR" />
+    <result column="investAmount" property="investamount" jdbcType="DECIMAL" />
+    <result column="investTime" property="investtime" jdbcType="TIMESTAMP" />
+    <result column="borrowerCreditPoint" property="borrowercreditpoint" jdbcType="SMALLINT" />
+    <result column="termReturnAmount" property="termreturnamount" jdbcType="DECIMAL" />
+    <result column="lastTermPrincipalCompensation" property="lasttermprincipalcompensation" jdbcType="DECIMAL" />
+    <result column="leftTermCount" property="lefttermcount" jdbcType="SMALLINT" />
+    <result column="toBeCollectedPrincipal" property="tobecollectedprincipal" jdbcType="DECIMAL" />
+    <result column="toBeCollectedInterest" property="tobecollectedinterest" jdbcType="DECIMAL" />
+    <result column="collectedPrincipal" property="collectedprincipal" jdbcType="DECIMAL" />
+    <result column="collectedInterest" property="collectedinterest" jdbcType="DECIMAL" />
+    <result column="nextPhasePrincipal" property="nextphaseprincipal" jdbcType="DECIMAL" />
+    <result column="nextPhaseInterest" property="nextphaseinterest" jdbcType="DECIMAL" />
+    <result column="lastRepayDate" property="lastrepaydate" jdbcType="TIMESTAMP" />
+    <result column="nextRepayDate" property="nextrepaydate" jdbcType="TIMESTAMP" />
+    <result column="autoInvest" property="autoinvest" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="soldPrice" property="soldprice" jdbcType="DECIMAL" />
+    <result column="soldDate" property="solddate" jdbcType="TIMESTAMP" />
+    <result column="soldPhaseNum" property="soldphasenum" jdbcType="SMALLINT" />
+    <result column="overDueDays" property="overduedays" jdbcType="SMALLINT" />
+    <result column="overDueInterest" property="overdueinterest" jdbcType="DECIMAL" />
+    <result column="soldDiscountRate" property="solddiscountrate" jdbcType="DECIMAL" />
+    <result column="soldCommission" property="soldcommission" jdbcType="DECIMAL" />
+    <result column="contractNo" property="contractno" jdbcType="VARCHAR" />
+    <result column="serialNumber" property="serialnumber" jdbcType="VARCHAR" />
+    <result column="inputFrom" property="inputfrom" jdbcType="INTEGER" />
+    <result column="red_money_id" property="redMoneyId" jdbcType="VARCHAR" />
+    <result column="toBeCollectedRedmoneyInterest" property="tobecollectedredmoneyinterest" jdbcType="DECIMAL" />
+    <result column="collectedRedmoneyInterest" property="collectedredmoneyinterest" jdbcType="DECIMAL" />
+    <result column="bear" property="bear" jdbcType="BIT" />
+    <result column="soldOrderNo" property="soldorderno" jdbcType="VARCHAR" />
+    <result column="contract" property="contract" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, loanId, investorUserId, investorNickname, lastInvestorUserId, lastInvestorNickname, 
+    investAmount, investTime, borrowerCreditPoint, termReturnAmount, lastTermPrincipalCompensation, 
+    leftTermCount, toBeCollectedPrincipal, toBeCollectedInterest, collectedPrincipal, 
+    collectedInterest, nextPhasePrincipal, nextPhaseInterest, lastRepayDate, nextRepayDate, 
+    autoInvest, `status`, soldPrice, soldDate, soldPhaseNum, overDueDays, overDueInterest, 
+    soldDiscountRate, soldCommission, contractNo, serialNumber, inputFrom, red_money_id, 
+    toBeCollectedRedmoneyInterest, collectedRedmoneyInterest, bear, soldOrderNo, contract
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from loan_investor
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from loan_investor
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.osplans.domain.LoanInvestor" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into loan_investor (loanId, investorUserId, investorNickname, 
+      lastInvestorUserId, lastInvestorNickname, 
+      investAmount, investTime, borrowerCreditPoint, 
+      termReturnAmount, lastTermPrincipalCompensation, 
+      leftTermCount, toBeCollectedPrincipal, 
+      toBeCollectedInterest, collectedPrincipal, 
+      collectedInterest, nextPhasePrincipal, 
+      nextPhaseInterest, lastRepayDate, nextRepayDate, 
+      autoInvest, `status`, soldPrice, 
+      soldDate, soldPhaseNum, overDueDays, 
+      overDueInterest, soldDiscountRate, soldCommission, 
+      contractNo, serialNumber, inputFrom, 
+      red_money_id, toBeCollectedRedmoneyInterest, 
+      collectedRedmoneyInterest, bear, soldOrderNo, 
+      contract)
+    values (#{loanid,jdbcType=INTEGER}, #{investoruserid,jdbcType=INTEGER}, #{investornickname,jdbcType=VARCHAR}, 
+      #{lastinvestoruserid,jdbcType=INTEGER}, #{lastinvestornickname,jdbcType=VARCHAR}, 
+      #{investamount,jdbcType=DECIMAL}, #{investtime,jdbcType=TIMESTAMP}, #{borrowercreditpoint,jdbcType=SMALLINT}, 
+      #{termreturnamount,jdbcType=DECIMAL}, #{lasttermprincipalcompensation,jdbcType=DECIMAL}, 
+      #{lefttermcount,jdbcType=SMALLINT}, #{tobecollectedprincipal,jdbcType=DECIMAL}, 
+      #{tobecollectedinterest,jdbcType=DECIMAL}, #{collectedprincipal,jdbcType=DECIMAL}, 
+      #{collectedinterest,jdbcType=DECIMAL}, #{nextphaseprincipal,jdbcType=DECIMAL}, 
+      #{nextphaseinterest,jdbcType=DECIMAL}, #{lastrepaydate,jdbcType=TIMESTAMP}, #{nextrepaydate,jdbcType=TIMESTAMP}, 
+      #{autoinvest,jdbcType=BIT}, #{status,jdbcType=SMALLINT}, #{soldprice,jdbcType=DECIMAL}, 
+      #{solddate,jdbcType=TIMESTAMP}, #{soldphasenum,jdbcType=SMALLINT}, #{overduedays,jdbcType=SMALLINT}, 
+      #{overdueinterest,jdbcType=DECIMAL}, #{solddiscountrate,jdbcType=DECIMAL}, #{soldcommission,jdbcType=DECIMAL}, 
+      #{contractno,jdbcType=VARCHAR}, #{serialnumber,jdbcType=VARCHAR}, #{inputfrom,jdbcType=INTEGER}, 
+      #{redMoneyId,jdbcType=VARCHAR}, #{tobecollectedredmoneyinterest,jdbcType=DECIMAL}, 
+      #{collectedredmoneyinterest,jdbcType=DECIMAL}, #{bear,jdbcType=BIT}, #{soldorderno,jdbcType=VARCHAR}, 
+      #{contract,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.osplans.domain.LoanInvestor" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into loan_investor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="loanid != null" >
+        loanId,
+      </if>
+      <if test="investoruserid != null" >
+        investorUserId,
+      </if>
+      <if test="investornickname != null" >
+        investorNickname,
+      </if>
+      <if test="lastinvestoruserid != null" >
+        lastInvestorUserId,
+      </if>
+      <if test="lastinvestornickname != null" >
+        lastInvestorNickname,
+      </if>
+      <if test="investamount != null" >
+        investAmount,
+      </if>
+      <if test="investtime != null" >
+        investTime,
+      </if>
+      <if test="borrowercreditpoint != null" >
+        borrowerCreditPoint,
+      </if>
+      <if test="termreturnamount != null" >
+        termReturnAmount,
+      </if>
+      <if test="lasttermprincipalcompensation != null" >
+        lastTermPrincipalCompensation,
+      </if>
+      <if test="lefttermcount != null" >
+        leftTermCount,
+      </if>
+      <if test="tobecollectedprincipal != null" >
+        toBeCollectedPrincipal,
+      </if>
+      <if test="tobecollectedinterest != null" >
+        toBeCollectedInterest,
+      </if>
+      <if test="collectedprincipal != null" >
+        collectedPrincipal,
+      </if>
+      <if test="collectedinterest != null" >
+        collectedInterest,
+      </if>
+      <if test="nextphaseprincipal != null" >
+        nextPhasePrincipal,
+      </if>
+      <if test="nextphaseinterest != null" >
+        nextPhaseInterest,
+      </if>
+      <if test="lastrepaydate != null" >
+        lastRepayDate,
+      </if>
+      <if test="nextrepaydate != null" >
+        nextRepayDate,
+      </if>
+      <if test="autoinvest != null" >
+        autoInvest,
+      </if>
+      <if test="status != null" >
+        `status`,
+      </if>
+      <if test="soldprice != null" >
+        soldPrice,
+      </if>
+      <if test="solddate != null" >
+        soldDate,
+      </if>
+      <if test="soldphasenum != null" >
+        soldPhaseNum,
+      </if>
+      <if test="overduedays != null" >
+        overDueDays,
+      </if>
+      <if test="overdueinterest != null" >
+        overDueInterest,
+      </if>
+      <if test="solddiscountrate != null" >
+        soldDiscountRate,
+      </if>
+      <if test="soldcommission != null" >
+        soldCommission,
+      </if>
+      <if test="contractno != null" >
+        contractNo,
+      </if>
+      <if test="serialnumber != null" >
+        serialNumber,
+      </if>
+      <if test="inputfrom != null" >
+        inputFrom,
+      </if>
+      <if test="redMoneyId != null" >
+        red_money_id,
+      </if>
+      <if test="tobecollectedredmoneyinterest != null" >
+        toBeCollectedRedmoneyInterest,
+      </if>
+      <if test="collectedredmoneyinterest != null" >
+        collectedRedmoneyInterest,
+      </if>
+      <if test="bear != null" >
+        bear,
+      </if>
+      <if test="soldorderno != null" >
+        soldOrderNo,
+      </if>
+      <if test="contract != null" >
+        contract,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="loanid != null" >
+        #{loanid,jdbcType=INTEGER},
+      </if>
+      <if test="investoruserid != null" >
+        #{investoruserid,jdbcType=INTEGER},
+      </if>
+      <if test="investornickname != null" >
+        #{investornickname,jdbcType=VARCHAR},
+      </if>
+      <if test="lastinvestoruserid != null" >
+        #{lastinvestoruserid,jdbcType=INTEGER},
+      </if>
+      <if test="lastinvestornickname != null" >
+        #{lastinvestornickname,jdbcType=VARCHAR},
+      </if>
+      <if test="investamount != null" >
+        #{investamount,jdbcType=DECIMAL},
+      </if>
+      <if test="investtime != null" >
+        #{investtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowercreditpoint != null" >
+        #{borrowercreditpoint,jdbcType=SMALLINT},
+      </if>
+      <if test="termreturnamount != null" >
+        #{termreturnamount,jdbcType=DECIMAL},
+      </if>
+      <if test="lasttermprincipalcompensation != null" >
+        #{lasttermprincipalcompensation,jdbcType=DECIMAL},
+      </if>
+      <if test="lefttermcount != null" >
+        #{lefttermcount,jdbcType=SMALLINT},
+      </if>
+      <if test="tobecollectedprincipal != null" >
+        #{tobecollectedprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="tobecollectedinterest != null" >
+        #{tobecollectedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="collectedprincipal != null" >
+        #{collectedprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="collectedinterest != null" >
+        #{collectedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="nextphaseprincipal != null" >
+        #{nextphaseprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="nextphaseinterest != null" >
+        #{nextphaseinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="lastrepaydate != null" >
+        #{lastrepaydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextrepaydate != null" >
+        #{nextrepaydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="autoinvest != null" >
+        #{autoinvest,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="soldprice != null" >
+        #{soldprice,jdbcType=DECIMAL},
+      </if>
+      <if test="solddate != null" >
+        #{solddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="soldphasenum != null" >
+        #{soldphasenum,jdbcType=SMALLINT},
+      </if>
+      <if test="overduedays != null" >
+        #{overduedays,jdbcType=SMALLINT},
+      </if>
+      <if test="overdueinterest != null" >
+        #{overdueinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="solddiscountrate != null" >
+        #{solddiscountrate,jdbcType=DECIMAL},
+      </if>
+      <if test="soldcommission != null" >
+        #{soldcommission,jdbcType=DECIMAL},
+      </if>
+      <if test="contractno != null" >
+        #{contractno,jdbcType=VARCHAR},
+      </if>
+      <if test="serialnumber != null" >
+        #{serialnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="inputfrom != null" >
+        #{inputfrom,jdbcType=INTEGER},
+      </if>
+      <if test="redMoneyId != null" >
+        #{redMoneyId,jdbcType=VARCHAR},
+      </if>
+      <if test="tobecollectedredmoneyinterest != null" >
+        #{tobecollectedredmoneyinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="collectedredmoneyinterest != null" >
+        #{collectedredmoneyinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="bear != null" >
+        #{bear,jdbcType=BIT},
+      </if>
+      <if test="soldorderno != null" >
+        #{soldorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="contract != null" >
+        #{contract,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.osplans.domain.LoanInvestor" >
+    update loan_investor
+    <set >
+      <if test="loanid != null" >
+        loanId = #{loanid,jdbcType=INTEGER},
+      </if>
+      <if test="investoruserid != null" >
+        investorUserId = #{investoruserid,jdbcType=INTEGER},
+      </if>
+      <if test="investornickname != null" >
+        investorNickname = #{investornickname,jdbcType=VARCHAR},
+      </if>
+      <if test="lastinvestoruserid != null" >
+        lastInvestorUserId = #{lastinvestoruserid,jdbcType=INTEGER},
+      </if>
+      <if test="lastinvestornickname != null" >
+        lastInvestorNickname = #{lastinvestornickname,jdbcType=VARCHAR},
+      </if>
+      <if test="investamount != null" >
+        investAmount = #{investamount,jdbcType=DECIMAL},
+      </if>
+      <if test="investtime != null" >
+        investTime = #{investtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="borrowercreditpoint != null" >
+        borrowerCreditPoint = #{borrowercreditpoint,jdbcType=SMALLINT},
+      </if>
+      <if test="termreturnamount != null" >
+        termReturnAmount = #{termreturnamount,jdbcType=DECIMAL},
+      </if>
+      <if test="lasttermprincipalcompensation != null" >
+        lastTermPrincipalCompensation = #{lasttermprincipalcompensation,jdbcType=DECIMAL},
+      </if>
+      <if test="lefttermcount != null" >
+        leftTermCount = #{lefttermcount,jdbcType=SMALLINT},
+      </if>
+      <if test="tobecollectedprincipal != null" >
+        toBeCollectedPrincipal = #{tobecollectedprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="tobecollectedinterest != null" >
+        toBeCollectedInterest = #{tobecollectedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="collectedprincipal != null" >
+        collectedPrincipal = #{collectedprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="collectedinterest != null" >
+        collectedInterest = #{collectedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="nextphaseprincipal != null" >
+        nextPhasePrincipal = #{nextphaseprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="nextphaseinterest != null" >
+        nextPhaseInterest = #{nextphaseinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="lastrepaydate != null" >
+        lastRepayDate = #{lastrepaydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextrepaydate != null" >
+        nextRepayDate = #{nextrepaydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="autoinvest != null" >
+        autoInvest = #{autoinvest,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        `status` = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="soldprice != null" >
+        soldPrice = #{soldprice,jdbcType=DECIMAL},
+      </if>
+      <if test="solddate != null" >
+        soldDate = #{solddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="soldphasenum != null" >
+        soldPhaseNum = #{soldphasenum,jdbcType=SMALLINT},
+      </if>
+      <if test="overduedays != null" >
+        overDueDays = #{overduedays,jdbcType=SMALLINT},
+      </if>
+      <if test="overdueinterest != null" >
+        overDueInterest = #{overdueinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="solddiscountrate != null" >
+        soldDiscountRate = #{solddiscountrate,jdbcType=DECIMAL},
+      </if>
+      <if test="soldcommission != null" >
+        soldCommission = #{soldcommission,jdbcType=DECIMAL},
+      </if>
+      <if test="contractno != null" >
+        contractNo = #{contractno,jdbcType=VARCHAR},
+      </if>
+      <if test="serialnumber != null" >
+        serialNumber = #{serialnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="inputfrom != null" >
+        inputFrom = #{inputfrom,jdbcType=INTEGER},
+      </if>
+      <if test="redMoneyId != null" >
+        red_money_id = #{redMoneyId,jdbcType=VARCHAR},
+      </if>
+      <if test="tobecollectedredmoneyinterest != null" >
+        toBeCollectedRedmoneyInterest = #{tobecollectedredmoneyinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="collectedredmoneyinterest != null" >
+        collectedRedmoneyInterest = #{collectedredmoneyinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="bear != null" >
+        bear = #{bear,jdbcType=BIT},
+      </if>
+      <if test="soldorderno != null" >
+        soldOrderNo = #{soldorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="contract != null" >
+        contract = #{contract,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.osplans.domain.LoanInvestor" >
+    update loan_investor
+    set loanId = #{loanid,jdbcType=INTEGER},
+      investorUserId = #{investoruserid,jdbcType=INTEGER},
+      investorNickname = #{investornickname,jdbcType=VARCHAR},
+      lastInvestorUserId = #{lastinvestoruserid,jdbcType=INTEGER},
+      lastInvestorNickname = #{lastinvestornickname,jdbcType=VARCHAR},
+      investAmount = #{investamount,jdbcType=DECIMAL},
+      investTime = #{investtime,jdbcType=TIMESTAMP},
+      borrowerCreditPoint = #{borrowercreditpoint,jdbcType=SMALLINT},
+      termReturnAmount = #{termreturnamount,jdbcType=DECIMAL},
+      lastTermPrincipalCompensation = #{lasttermprincipalcompensation,jdbcType=DECIMAL},
+      leftTermCount = #{lefttermcount,jdbcType=SMALLINT},
+      toBeCollectedPrincipal = #{tobecollectedprincipal,jdbcType=DECIMAL},
+      toBeCollectedInterest = #{tobecollectedinterest,jdbcType=DECIMAL},
+      collectedPrincipal = #{collectedprincipal,jdbcType=DECIMAL},
+      collectedInterest = #{collectedinterest,jdbcType=DECIMAL},
+      nextPhasePrincipal = #{nextphaseprincipal,jdbcType=DECIMAL},
+      nextPhaseInterest = #{nextphaseinterest,jdbcType=DECIMAL},
+      lastRepayDate = #{lastrepaydate,jdbcType=TIMESTAMP},
+      nextRepayDate = #{nextrepaydate,jdbcType=TIMESTAMP},
+      autoInvest = #{autoinvest,jdbcType=BIT},
+      `status` = #{status,jdbcType=SMALLINT},
+      soldPrice = #{soldprice,jdbcType=DECIMAL},
+      soldDate = #{solddate,jdbcType=TIMESTAMP},
+      soldPhaseNum = #{soldphasenum,jdbcType=SMALLINT},
+      overDueDays = #{overduedays,jdbcType=SMALLINT},
+      overDueInterest = #{overdueinterest,jdbcType=DECIMAL},
+      soldDiscountRate = #{solddiscountrate,jdbcType=DECIMAL},
+      soldCommission = #{soldcommission,jdbcType=DECIMAL},
+      contractNo = #{contractno,jdbcType=VARCHAR},
+      serialNumber = #{serialnumber,jdbcType=VARCHAR},
+      inputFrom = #{inputfrom,jdbcType=INTEGER},
+      red_money_id = #{redMoneyId,jdbcType=VARCHAR},
+      toBeCollectedRedmoneyInterest = #{tobecollectedredmoneyinterest,jdbcType=DECIMAL},
+      collectedRedmoneyInterest = #{collectedredmoneyinterest,jdbcType=DECIMAL},
+      bear = #{bear,jdbcType=BIT},
+      soldOrderNo = #{soldorderno,jdbcType=VARCHAR},
+      contract = #{contract,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

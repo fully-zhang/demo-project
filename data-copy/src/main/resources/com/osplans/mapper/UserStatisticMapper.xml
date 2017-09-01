@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.osplans.mapper.UserStatisticMapper" >
+  <resultMap id="BaseResultMap" type="com.osplans.domain.UserStatistic" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="totalCharge" property="totalcharge" jdbcType="DECIMAL" />
+    <result column="totalWithdraw" property="totalwithdraw" jdbcType="DECIMAL" />
+    <result column="totalAssert" property="totalassert" jdbcType="DECIMAL" />
+    <result column="totalEarnedInterest" property="totalearnedinterest" jdbcType="DECIMAL" />
+    <result column="totalEarnedPunitiveInterest" property="totalearnedpunitiveinterest" jdbcType="DECIMAL" />
+    <result column="WeightedRateOfReturn" property="weightedrateofreturn" jdbcType="DECIMAL" />
+    <result column="investCount" property="investcount" jdbcType="INTEGER" />
+    <result column="totalInvestAmout" property="totalinvestamout" jdbcType="DECIMAL" />
+    <result column="investAmoutInThisMonth" property="investamoutinthismonth" jdbcType="DECIMAL" />
+    <result column="returnedAmountInThisMonth" property="returnedamountinthismonth" jdbcType="DECIMAL" />
+    <result column="toCollectPrincipal" property="tocollectprincipal" jdbcType="DECIMAL" />
+    <result column="toCollectInterest" property="tocollectinterest" jdbcType="DECIMAL" />
+    <result column="totalReturnedPrincipal" property="totalreturnedprincipal" jdbcType="DECIMAL" />
+    <result column="totalPlatformPayed" property="totalplatformpayed" jdbcType="DECIMAL" />
+    <result column="boughtCreditRights" property="boughtcreditrights" jdbcType="DECIMAL" />
+    <result column="soldCreditRights" property="soldcreditrights" jdbcType="DECIMAL" />
+    <result column="requestLoanCount" property="requestloancount" jdbcType="SMALLINT" />
+    <result column="permittedLoanCount" property="permittedloancount" jdbcType="SMALLINT" />
+    <result column="finishedLoanCount" property="finishedloancount" jdbcType="SMALLINT" />
+    <result column="overDueCount" property="overduecount" jdbcType="SMALLINT" />
+    <result column="badLoanCount" property="badloancount" jdbcType="SMALLINT" />
+    <result column="totalPermittedAmount" property="totalpermittedamount" jdbcType="DECIMAL" />
+    <result column="totalToRepayAmount" property="totaltorepayamount" jdbcType="DECIMAL" />
+    <result column="totalOverDueAmount" property="totaloverdueamount" jdbcType="DECIMAL" />
+    <result column="actualLoanAmount" property="actualloanamount" jdbcType="DECIMAL" />
+    <result column="serviceFees" property="servicefees" jdbcType="DECIMAL" />
+    <result column="riskMargin" property="riskmargin" jdbcType="DECIMAL" />
+    <result column="alreadyPayInterest" property="alreadypayinterest" jdbcType="DECIMAL" />
+    <result column="totalInterest" property="totalinterest" jdbcType="DECIMAL" />
+    <result column="alreadyRepayment" property="alreadyrepayment" jdbcType="DECIMAL" />
+    <result column="residualRepayment" property="residualrepayment" jdbcType="DECIMAL" />
+    <result column="totalRepaiedPrincipal" property="totalrepaiedprincipal" jdbcType="DECIMAL" />
+    <result column="totalRepaiedInterest" property="totalrepaiedinterest" jdbcType="DECIMAL" />
+    <result column="boughtCreditRightsCount" property="boughtcreditrightscount" jdbcType="INTEGER" />
+    <result column="soldCreditRightsCount" property="soldcreditrightscount" jdbcType="INTEGER" />
+    <result column="boughtCreditRightsPaidInterest" property="boughtcreditrightspaidinterest" jdbcType="DECIMAL" />
+    <result column="boughtCreditRightsEarnedDiscount" property="boughtcreditrightsearneddiscount" jdbcType="DECIMAL" />
+    <result column="soldCreditRightsEarnedInterest" property="soldcreditrightsearnedinterest" jdbcType="DECIMAL" />
+    <result column="soldCreditRightsPaidDiscount" property="soldcreditrightspaiddiscount" jdbcType="DECIMAL" />
+    <result column="commissionFees" property="commissionfees" jdbcType="DECIMAL" />
+    <result column="activityBonus" property="activitybonus" jdbcType="DECIMAL" />
+    <result column="reward_money" property="rewardMoney" jdbcType="DECIMAL" />
+    <result column="toCollectRedmoneyInterest" property="tocollectredmoneyinterest" jdbcType="DECIMAL" />
+    <result column="totalEarnedRedmoneyInterest" property="totalearnedredmoneyinterest" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, totalCharge, totalWithdraw, totalAssert, totalEarnedInterest, totalEarnedPunitiveInterest, 
+    WeightedRateOfReturn, investCount, totalInvestAmout, investAmoutInThisMonth, returnedAmountInThisMonth, 
+    toCollectPrincipal, toCollectInterest, totalReturnedPrincipal, totalPlatformPayed, 
+    boughtCreditRights, soldCreditRights, requestLoanCount, permittedLoanCount, finishedLoanCount, 
+    overDueCount, badLoanCount, totalPermittedAmount, totalToRepayAmount, totalOverDueAmount, 
+    actualLoanAmount, serviceFees, riskMargin, alreadyPayInterest, totalInterest, alreadyRepayment, 
+    residualRepayment, totalRepaiedPrincipal, totalRepaiedInterest, boughtCreditRightsCount, 
+    soldCreditRightsCount, boughtCreditRightsPaidInterest, boughtCreditRightsEarnedDiscount, 
+    soldCreditRightsEarnedInterest, soldCreditRightsPaidDiscount, commissionFees, activityBonus, 
+    reward_money, toCollectRedmoneyInterest, totalEarnedRedmoneyInterest
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_statistic
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_statistic
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.osplans.domain.UserStatistic" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user_statistic (userId, totalCharge, totalWithdraw, 
+      totalAssert, totalEarnedInterest, totalEarnedPunitiveInterest, 
+      WeightedRateOfReturn, investCount, totalInvestAmout, 
+      investAmoutInThisMonth, returnedAmountInThisMonth, 
+      toCollectPrincipal, toCollectInterest, 
+      totalReturnedPrincipal, totalPlatformPayed, 
+      boughtCreditRights, soldCreditRights, requestLoanCount, 
+      permittedLoanCount, finishedLoanCount, 
+      overDueCount, badLoanCount, totalPermittedAmount, 
+      totalToRepayAmount, totalOverDueAmount, 
+      actualLoanAmount, serviceFees, riskMargin, 
+      alreadyPayInterest, totalInterest, alreadyRepayment, 
+      residualRepayment, totalRepaiedPrincipal, 
+      totalRepaiedInterest, boughtCreditRightsCount, 
+      soldCreditRightsCount, boughtCreditRightsPaidInterest, 
+      boughtCreditRightsEarnedDiscount, soldCreditRightsEarnedInterest, 
+      soldCreditRightsPaidDiscount, commissionFees, 
+      activityBonus, reward_money, toCollectRedmoneyInterest, 
+      totalEarnedRedmoneyInterest)
+    values (#{userid,jdbcType=INTEGER}, #{totalcharge,jdbcType=DECIMAL}, #{totalwithdraw,jdbcType=DECIMAL}, 
+      #{totalassert,jdbcType=DECIMAL}, #{totalearnedinterest,jdbcType=DECIMAL}, #{totalearnedpunitiveinterest,jdbcType=DECIMAL}, 
+      #{weightedrateofreturn,jdbcType=DECIMAL}, #{investcount,jdbcType=INTEGER}, #{totalinvestamout,jdbcType=DECIMAL}, 
+      #{investamoutinthismonth,jdbcType=DECIMAL}, #{returnedamountinthismonth,jdbcType=DECIMAL}, 
+      #{tocollectprincipal,jdbcType=DECIMAL}, #{tocollectinterest,jdbcType=DECIMAL}, 
+      #{totalreturnedprincipal,jdbcType=DECIMAL}, #{totalplatformpayed,jdbcType=DECIMAL}, 
+      #{boughtcreditrights,jdbcType=DECIMAL}, #{soldcreditrights,jdbcType=DECIMAL}, #{requestloancount,jdbcType=SMALLINT}, 
+      #{permittedloancount,jdbcType=SMALLINT}, #{finishedloancount,jdbcType=SMALLINT}, 
+      #{overduecount,jdbcType=SMALLINT}, #{badloancount,jdbcType=SMALLINT}, #{totalpermittedamount,jdbcType=DECIMAL}, 
+      #{totaltorepayamount,jdbcType=DECIMAL}, #{totaloverdueamount,jdbcType=DECIMAL}, 
+      #{actualloanamount,jdbcType=DECIMAL}, #{servicefees,jdbcType=DECIMAL}, #{riskmargin,jdbcType=DECIMAL}, 
+      #{alreadypayinterest,jdbcType=DECIMAL}, #{totalinterest,jdbcType=DECIMAL}, #{alreadyrepayment,jdbcType=DECIMAL}, 
+      #{residualrepayment,jdbcType=DECIMAL}, #{totalrepaiedprincipal,jdbcType=DECIMAL}, 
+      #{totalrepaiedinterest,jdbcType=DECIMAL}, #{boughtcreditrightscount,jdbcType=INTEGER}, 
+      #{soldcreditrightscount,jdbcType=INTEGER}, #{boughtcreditrightspaidinterest,jdbcType=DECIMAL}, 
+      #{boughtcreditrightsearneddiscount,jdbcType=DECIMAL}, #{soldcreditrightsearnedinterest,jdbcType=DECIMAL}, 
+      #{soldcreditrightspaiddiscount,jdbcType=DECIMAL}, #{commissionfees,jdbcType=DECIMAL}, 
+      #{activitybonus,jdbcType=DECIMAL}, #{rewardMoney,jdbcType=DECIMAL}, #{tocollectredmoneyinterest,jdbcType=DECIMAL}, 
+      #{totalearnedredmoneyinterest,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.osplans.domain.UserStatistic" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user_statistic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="totalcharge != null" >
+        totalCharge,
+      </if>
+      <if test="totalwithdraw != null" >
+        totalWithdraw,
+      </if>
+      <if test="totalassert != null" >
+        totalAssert,
+      </if>
+      <if test="totalearnedinterest != null" >
+        totalEarnedInterest,
+      </if>
+      <if test="totalearnedpunitiveinterest != null" >
+        totalEarnedPunitiveInterest,
+      </if>
+      <if test="weightedrateofreturn != null" >
+        WeightedRateOfReturn,
+      </if>
+      <if test="investcount != null" >
+        investCount,
+      </if>
+      <if test="totalinvestamout != null" >
+        totalInvestAmout,
+      </if>
+      <if test="investamoutinthismonth != null" >
+        investAmoutInThisMonth,
+      </if>
+      <if test="returnedamountinthismonth != null" >
+        returnedAmountInThisMonth,
+      </if>
+      <if test="tocollectprincipal != null" >
+        toCollectPrincipal,
+      </if>
+      <if test="tocollectinterest != null" >
+        toCollectInterest,
+      </if>
+      <if test="totalreturnedprincipal != null" >
+        totalReturnedPrincipal,
+      </if>
+      <if test="totalplatformpayed != null" >
+        totalPlatformPayed,
+      </if>
+      <if test="boughtcreditrights != null" >
+        boughtCreditRights,
+      </if>
+      <if test="soldcreditrights != null" >
+        soldCreditRights,
+      </if>
+      <if test="requestloancount != null" >
+        requestLoanCount,
+      </if>
+      <if test="permittedloancount != null" >
+        permittedLoanCount,
+      </if>
+      <if test="finishedloancount != null" >
+        finishedLoanCount,
+      </if>
+      <if test="overduecount != null" >
+        overDueCount,
+      </if>
+      <if test="badloancount != null" >
+        badLoanCount,
+      </if>
+      <if test="totalpermittedamount != null" >
+        totalPermittedAmount,
+      </if>
+      <if test="totaltorepayamount != null" >
+        totalToRepayAmount,
+      </if>
+      <if test="totaloverdueamount != null" >
+        totalOverDueAmount,
+      </if>
+      <if test="actualloanamount != null" >
+        actualLoanAmount,
+      </if>
+      <if test="servicefees != null" >
+        serviceFees,
+      </if>
+      <if test="riskmargin != null" >
+        riskMargin,
+      </if>
+      <if test="alreadypayinterest != null" >
+        alreadyPayInterest,
+      </if>
+      <if test="totalinterest != null" >
+        totalInterest,
+      </if>
+      <if test="alreadyrepayment != null" >
+        alreadyRepayment,
+      </if>
+      <if test="residualrepayment != null" >
+        residualRepayment,
+      </if>
+      <if test="totalrepaiedprincipal != null" >
+        totalRepaiedPrincipal,
+      </if>
+      <if test="totalrepaiedinterest != null" >
+        totalRepaiedInterest,
+      </if>
+      <if test="boughtcreditrightscount != null" >
+        boughtCreditRightsCount,
+      </if>
+      <if test="soldcreditrightscount != null" >
+        soldCreditRightsCount,
+      </if>
+      <if test="boughtcreditrightspaidinterest != null" >
+        boughtCreditRightsPaidInterest,
+      </if>
+      <if test="boughtcreditrightsearneddiscount != null" >
+        boughtCreditRightsEarnedDiscount,
+      </if>
+      <if test="soldcreditrightsearnedinterest != null" >
+        soldCreditRightsEarnedInterest,
+      </if>
+      <if test="soldcreditrightspaiddiscount != null" >
+        soldCreditRightsPaidDiscount,
+      </if>
+      <if test="commissionfees != null" >
+        commissionFees,
+      </if>
+      <if test="activitybonus != null" >
+        activityBonus,
+      </if>
+      <if test="rewardMoney != null" >
+        reward_money,
+      </if>
+      <if test="tocollectredmoneyinterest != null" >
+        toCollectRedmoneyInterest,
+      </if>
+      <if test="totalearnedredmoneyinterest != null" >
+        totalEarnedRedmoneyInterest,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="totalcharge != null" >
+        #{totalcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="totalwithdraw != null" >
+        #{totalwithdraw,jdbcType=DECIMAL},
+      </if>
+      <if test="totalassert != null" >
+        #{totalassert,jdbcType=DECIMAL},
+      </if>
+      <if test="totalearnedinterest != null" >
+        #{totalearnedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="totalearnedpunitiveinterest != null" >
+        #{totalearnedpunitiveinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="weightedrateofreturn != null" >
+        #{weightedrateofreturn,jdbcType=DECIMAL},
+      </if>
+      <if test="investcount != null" >
+        #{investcount,jdbcType=INTEGER},
+      </if>
+      <if test="totalinvestamout != null" >
+        #{totalinvestamout,jdbcType=DECIMAL},
+      </if>
+      <if test="investamoutinthismonth != null" >
+        #{investamoutinthismonth,jdbcType=DECIMAL},
+      </if>
+      <if test="returnedamountinthismonth != null" >
+        #{returnedamountinthismonth,jdbcType=DECIMAL},
+      </if>
+      <if test="tocollectprincipal != null" >
+        #{tocollectprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="tocollectinterest != null" >
+        #{tocollectinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="totalreturnedprincipal != null" >
+        #{totalreturnedprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="totalplatformpayed != null" >
+        #{totalplatformpayed,jdbcType=DECIMAL},
+      </if>
+      <if test="boughtcreditrights != null" >
+        #{boughtcreditrights,jdbcType=DECIMAL},
+      </if>
+      <if test="soldcreditrights != null" >
+        #{soldcreditrights,jdbcType=DECIMAL},
+      </if>
+      <if test="requestloancount != null" >
+        #{requestloancount,jdbcType=SMALLINT},
+      </if>
+      <if test="permittedloancount != null" >
+        #{permittedloancount,jdbcType=SMALLINT},
+      </if>
+      <if test="finishedloancount != null" >
+        #{finishedloancount,jdbcType=SMALLINT},
+      </if>
+      <if test="overduecount != null" >
+        #{overduecount,jdbcType=SMALLINT},
+      </if>
+      <if test="badloancount != null" >
+        #{badloancount,jdbcType=SMALLINT},
+      </if>
+      <if test="totalpermittedamount != null" >
+        #{totalpermittedamount,jdbcType=DECIMAL},
+      </if>
+      <if test="totaltorepayamount != null" >
+        #{totaltorepayamount,jdbcType=DECIMAL},
+      </if>
+      <if test="totaloverdueamount != null" >
+        #{totaloverdueamount,jdbcType=DECIMAL},
+      </if>
+      <if test="actualloanamount != null" >
+        #{actualloanamount,jdbcType=DECIMAL},
+      </if>
+      <if test="servicefees != null" >
+        #{servicefees,jdbcType=DECIMAL},
+      </if>
+      <if test="riskmargin != null" >
+        #{riskmargin,jdbcType=DECIMAL},
+      </if>
+      <if test="alreadypayinterest != null" >
+        #{alreadypayinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="totalinterest != null" >
+        #{totalinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="alreadyrepayment != null" >
+        #{alreadyrepayment,jdbcType=DECIMAL},
+      </if>
+      <if test="residualrepayment != null" >
+        #{residualrepayment,jdbcType=DECIMAL},
+      </if>
+      <if test="totalrepaiedprincipal != null" >
+        #{totalrepaiedprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="totalrepaiedinterest != null" >
+        #{totalrepaiedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="boughtcreditrightscount != null" >
+        #{boughtcreditrightscount,jdbcType=INTEGER},
+      </if>
+      <if test="soldcreditrightscount != null" >
+        #{soldcreditrightscount,jdbcType=INTEGER},
+      </if>
+      <if test="boughtcreditrightspaidinterest != null" >
+        #{boughtcreditrightspaidinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="boughtcreditrightsearneddiscount != null" >
+        #{boughtcreditrightsearneddiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="soldcreditrightsearnedinterest != null" >
+        #{soldcreditrightsearnedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="soldcreditrightspaiddiscount != null" >
+        #{soldcreditrightspaiddiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionfees != null" >
+        #{commissionfees,jdbcType=DECIMAL},
+      </if>
+      <if test="activitybonus != null" >
+        #{activitybonus,jdbcType=DECIMAL},
+      </if>
+      <if test="rewardMoney != null" >
+        #{rewardMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="tocollectredmoneyinterest != null" >
+        #{tocollectredmoneyinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="totalearnedredmoneyinterest != null" >
+        #{totalearnedredmoneyinterest,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.osplans.domain.UserStatistic" >
+    update user_statistic
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="totalcharge != null" >
+        totalCharge = #{totalcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="totalwithdraw != null" >
+        totalWithdraw = #{totalwithdraw,jdbcType=DECIMAL},
+      </if>
+      <if test="totalassert != null" >
+        totalAssert = #{totalassert,jdbcType=DECIMAL},
+      </if>
+      <if test="totalearnedinterest != null" >
+        totalEarnedInterest = #{totalearnedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="totalearnedpunitiveinterest != null" >
+        totalEarnedPunitiveInterest = #{totalearnedpunitiveinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="weightedrateofreturn != null" >
+        WeightedRateOfReturn = #{weightedrateofreturn,jdbcType=DECIMAL},
+      </if>
+      <if test="investcount != null" >
+        investCount = #{investcount,jdbcType=INTEGER},
+      </if>
+      <if test="totalinvestamout != null" >
+        totalInvestAmout = #{totalinvestamout,jdbcType=DECIMAL},
+      </if>
+      <if test="investamoutinthismonth != null" >
+        investAmoutInThisMonth = #{investamoutinthismonth,jdbcType=DECIMAL},
+      </if>
+      <if test="returnedamountinthismonth != null" >
+        returnedAmountInThisMonth = #{returnedamountinthismonth,jdbcType=DECIMAL},
+      </if>
+      <if test="tocollectprincipal != null" >
+        toCollectPrincipal = #{tocollectprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="tocollectinterest != null" >
+        toCollectInterest = #{tocollectinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="totalreturnedprincipal != null" >
+        totalReturnedPrincipal = #{totalreturnedprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="totalplatformpayed != null" >
+        totalPlatformPayed = #{totalplatformpayed,jdbcType=DECIMAL},
+      </if>
+      <if test="boughtcreditrights != null" >
+        boughtCreditRights = #{boughtcreditrights,jdbcType=DECIMAL},
+      </if>
+      <if test="soldcreditrights != null" >
+        soldCreditRights = #{soldcreditrights,jdbcType=DECIMAL},
+      </if>
+      <if test="requestloancount != null" >
+        requestLoanCount = #{requestloancount,jdbcType=SMALLINT},
+      </if>
+      <if test="permittedloancount != null" >
+        permittedLoanCount = #{permittedloancount,jdbcType=SMALLINT},
+      </if>
+      <if test="finishedloancount != null" >
+        finishedLoanCount = #{finishedloancount,jdbcType=SMALLINT},
+      </if>
+      <if test="overduecount != null" >
+        overDueCount = #{overduecount,jdbcType=SMALLINT},
+      </if>
+      <if test="badloancount != null" >
+        badLoanCount = #{badloancount,jdbcType=SMALLINT},
+      </if>
+      <if test="totalpermittedamount != null" >
+        totalPermittedAmount = #{totalpermittedamount,jdbcType=DECIMAL},
+      </if>
+      <if test="totaltorepayamount != null" >
+        totalToRepayAmount = #{totaltorepayamount,jdbcType=DECIMAL},
+      </if>
+      <if test="totaloverdueamount != null" >
+        totalOverDueAmount = #{totaloverdueamount,jdbcType=DECIMAL},
+      </if>
+      <if test="actualloanamount != null" >
+        actualLoanAmount = #{actualloanamount,jdbcType=DECIMAL},
+      </if>
+      <if test="servicefees != null" >
+        serviceFees = #{servicefees,jdbcType=DECIMAL},
+      </if>
+      <if test="riskmargin != null" >
+        riskMargin = #{riskmargin,jdbcType=DECIMAL},
+      </if>
+      <if test="alreadypayinterest != null" >
+        alreadyPayInterest = #{alreadypayinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="totalinterest != null" >
+        totalInterest = #{totalinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="alreadyrepayment != null" >
+        alreadyRepayment = #{alreadyrepayment,jdbcType=DECIMAL},
+      </if>
+      <if test="residualrepayment != null" >
+        residualRepayment = #{residualrepayment,jdbcType=DECIMAL},
+      </if>
+      <if test="totalrepaiedprincipal != null" >
+        totalRepaiedPrincipal = #{totalrepaiedprincipal,jdbcType=DECIMAL},
+      </if>
+      <if test="totalrepaiedinterest != null" >
+        totalRepaiedInterest = #{totalrepaiedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="boughtcreditrightscount != null" >
+        boughtCreditRightsCount = #{boughtcreditrightscount,jdbcType=INTEGER},
+      </if>
+      <if test="soldcreditrightscount != null" >
+        soldCreditRightsCount = #{soldcreditrightscount,jdbcType=INTEGER},
+      </if>
+      <if test="boughtcreditrightspaidinterest != null" >
+        boughtCreditRightsPaidInterest = #{boughtcreditrightspaidinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="boughtcreditrightsearneddiscount != null" >
+        boughtCreditRightsEarnedDiscount = #{boughtcreditrightsearneddiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="soldcreditrightsearnedinterest != null" >
+        soldCreditRightsEarnedInterest = #{soldcreditrightsearnedinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="soldcreditrightspaiddiscount != null" >
+        soldCreditRightsPaidDiscount = #{soldcreditrightspaiddiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="commissionfees != null" >
+        commissionFees = #{commissionfees,jdbcType=DECIMAL},
+      </if>
+      <if test="activitybonus != null" >
+        activityBonus = #{activitybonus,jdbcType=DECIMAL},
+      </if>
+      <if test="rewardMoney != null" >
+        reward_money = #{rewardMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="tocollectredmoneyinterest != null" >
+        toCollectRedmoneyInterest = #{tocollectredmoneyinterest,jdbcType=DECIMAL},
+      </if>
+      <if test="totalearnedredmoneyinterest != null" >
+        totalEarnedRedmoneyInterest = #{totalearnedredmoneyinterest,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.osplans.domain.UserStatistic" >
+    update user_statistic
+    set userId = #{userid,jdbcType=INTEGER},
+      totalCharge = #{totalcharge,jdbcType=DECIMAL},
+      totalWithdraw = #{totalwithdraw,jdbcType=DECIMAL},
+      totalAssert = #{totalassert,jdbcType=DECIMAL},
+      totalEarnedInterest = #{totalearnedinterest,jdbcType=DECIMAL},
+      totalEarnedPunitiveInterest = #{totalearnedpunitiveinterest,jdbcType=DECIMAL},
+      WeightedRateOfReturn = #{weightedrateofreturn,jdbcType=DECIMAL},
+      investCount = #{investcount,jdbcType=INTEGER},
+      totalInvestAmout = #{totalinvestamout,jdbcType=DECIMAL},
+      investAmoutInThisMonth = #{investamoutinthismonth,jdbcType=DECIMAL},
+      returnedAmountInThisMonth = #{returnedamountinthismonth,jdbcType=DECIMAL},
+      toCollectPrincipal = #{tocollectprincipal,jdbcType=DECIMAL},
+      toCollectInterest = #{tocollectinterest,jdbcType=DECIMAL},
+      totalReturnedPrincipal = #{totalreturnedprincipal,jdbcType=DECIMAL},
+      totalPlatformPayed = #{totalplatformpayed,jdbcType=DECIMAL},
+      boughtCreditRights = #{boughtcreditrights,jdbcType=DECIMAL},
+      soldCreditRights = #{soldcreditrights,jdbcType=DECIMAL},
+      requestLoanCount = #{requestloancount,jdbcType=SMALLINT},
+      permittedLoanCount = #{permittedloancount,jdbcType=SMALLINT},
+      finishedLoanCount = #{finishedloancount,jdbcType=SMALLINT},
+      overDueCount = #{overduecount,jdbcType=SMALLINT},
+      badLoanCount = #{badloancount,jdbcType=SMALLINT},
+      totalPermittedAmount = #{totalpermittedamount,jdbcType=DECIMAL},
+      totalToRepayAmount = #{totaltorepayamount,jdbcType=DECIMAL},
+      totalOverDueAmount = #{totaloverdueamount,jdbcType=DECIMAL},
+      actualLoanAmount = #{actualloanamount,jdbcType=DECIMAL},
+      serviceFees = #{servicefees,jdbcType=DECIMAL},
+      riskMargin = #{riskmargin,jdbcType=DECIMAL},
+      alreadyPayInterest = #{alreadypayinterest,jdbcType=DECIMAL},
+      totalInterest = #{totalinterest,jdbcType=DECIMAL},
+      alreadyRepayment = #{alreadyrepayment,jdbcType=DECIMAL},
+      residualRepayment = #{residualrepayment,jdbcType=DECIMAL},
+      totalRepaiedPrincipal = #{totalrepaiedprincipal,jdbcType=DECIMAL},
+      totalRepaiedInterest = #{totalrepaiedinterest,jdbcType=DECIMAL},
+      boughtCreditRightsCount = #{boughtcreditrightscount,jdbcType=INTEGER},
+      soldCreditRightsCount = #{soldcreditrightscount,jdbcType=INTEGER},
+      boughtCreditRightsPaidInterest = #{boughtcreditrightspaidinterest,jdbcType=DECIMAL},
+      boughtCreditRightsEarnedDiscount = #{boughtcreditrightsearneddiscount,jdbcType=DECIMAL},
+      soldCreditRightsEarnedInterest = #{soldcreditrightsearnedinterest,jdbcType=DECIMAL},
+      soldCreditRightsPaidDiscount = #{soldcreditrightspaiddiscount,jdbcType=DECIMAL},
+      commissionFees = #{commissionfees,jdbcType=DECIMAL},
+      activityBonus = #{activitybonus,jdbcType=DECIMAL},
+      reward_money = #{rewardMoney,jdbcType=DECIMAL},
+      toCollectRedmoneyInterest = #{tocollectredmoneyinterest,jdbcType=DECIMAL},
+      totalEarnedRedmoneyInterest = #{totalearnedredmoneyinterest,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
